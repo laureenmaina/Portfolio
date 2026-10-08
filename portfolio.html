@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laurine Maina | Backend Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF2F7; --surface:#FFFFFF; --ink:#14202E; --muted:#55657A; --line:#D5DDE8;
+  --accent:#2447F5; --accent-ink:#FFFFFF; --ok:#0E9F6E; --code:#0F1B2B; --code-ink:#DCE6F5;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0C131D;--surface:#142031;--ink:#E8EEF7;--muted:#98A8BE;--line:#243349;--accent:#6F8BFF;--accent-ink:#0C131D;--ok:#3DD6A0;--code:#09101A;--code-ink:#DCE6F5}
+}
+:root[data-theme="dark"]{--bg:#0C131D;--surface:#142031;--ink:#E8EEF7;--muted:#98A8BE;--line:#243349;--accent:#6F8BFF;--accent-ink:#0C131D;--ok:#3DD6A0;--code:#09101A;--code-ink:#DCE6F5}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Bricolage Grotesque','Figtree',system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.logo{font:800 1.25rem 'Bricolage Grotesque',sans-serif;text-decoration:none}
+.nav nav{display:flex;gap:22px;align-items:center}
+.nav nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.nav nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 12px;font:500 .85rem 'Figtree',sans-serif;cursor:pointer}
+@media(max-width:640px){.nav nav a.hide-sm{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 88px}
+.hero h1{font-size:clamp(2.6rem,6.4vw,4.9rem);font-weight:800}
+.hero p.lead{color:var(--muted);max-width:34em;margin:22px 0 30px;font-size:1.15rem}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn{transition:transform .15s}
+.api{background:var(--code);color:var(--code-ink);border-radius:16px;overflow:hidden;font:400 .9rem/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-shadow:0 24px 50px -24px rgba(20,32,46,.55)}
+.api .bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.api .verb{background:var(--accent);color:var(--accent-ink);font-weight:700;padding:2px 8px;border-radius:5px;margin-right:8px}
+.api pre{margin:0;padding:16px;white-space:pre-wrap;word-break:break-word;min-height:5.2em}
+.api button{font:600 .85rem 'Figtree',sans-serif;background:var(--ok);color:#06241a;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.api .res{border-top:1px dashed rgba(255,255,255,.18)}
+.api .status{padding:12px 16px 0;color:var(--ok);font-weight:700}
+.api .note{padding:0 16px 14px;color:#8FA3BF;font-size:.8rem}
+.k{color:#8FB0FF}.s{color:#9EE6C4}
+
+/* sections */
+section{padding:72px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:36px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 36px}
+.skills h3{font-size:1.05rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 13px;font-size:.92rem}
+.proj{display:grid;grid-template-columns:200px 1fr;gap:12px 40px;padding:30px 0;border-bottom:1px solid var(--line)}
+.proj:first-of-type{padding-top:0}
+.proj .meta{color:var(--muted);font-size:.95rem}
+.proj h3{font-size:1.5rem;margin-bottom:4px}
+.proj .role{color:var(--accent);font-weight:600;margin-bottom:12px}
+.proj ul{margin:0 0 14px;padding-left:1.1em;max-width:62ch}
+.proj li{margin-bottom:6px}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding-bottom:56px}.proj{grid-template-columns:1fr}}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:12px 40px;margin-bottom:32px}
+.tl .meta{color:var(--muted);font-size:.95rem}
+.tl h3{font-size:1.25rem;margin-bottom:2px}
+@media(max-width:720px){.tl{grid-template-columns:1fr;gap:2px}}
+.edu{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.edu li{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.edu b{font-weight:600}.edu span{color:var(--muted)}
+.contact{text-align:left}
+.contact h2{font-size:clamp(2.2rem,6vw,4rem)!important;max-width:14em}
+.contact p{color:var(--muted);max-width:34em;margin:0 0 28px}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.links a{color:var(--muted);text-underline-offset:4px}
+footer{padding:28px 0 40px;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="logo" href="#top">Laurine Maina</a>
+    <nav aria-label="Main">
+      <a class="hide-sm" href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a class="hide-sm" href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <button id="theme" type="button" aria-label="Toggle light or dark theme">Theme</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>I build the backend that makes payments, bookings and orders work.</h1>
+        <p class="lead">I'm Laurine, a software developer in Nairobi. I design secure APIs in Python, Flask and Django, connect them to M-Pesa and other payment systems, and work with frontend teams to ship products people can use.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn" href="mailto:laurinemaina58@gmail.com">Email me</a>
+        </div>
+      </div>
+      <div class="api" aria-label="Example API request and response">
+        <div class="bar"><div><span class="verb">POST</span>/api/payments/stk-push</div><button id="send" type="button">Send request</button></div>
+<pre><span class="k">{</span>
+  <span class="k">"phone"</span>: <span class="s">"2547XXXXXXXX"</span>,
+  <span class="k">"booking_id"</span>: <span class="s">128</span>
+<span class="k">}</span></pre>
+        <div class="res" id="res" hidden>
+          <div class="status">200 OK</div>
+<pre id="out"></pre>
+          <div class="note">An example of the endpoints I build, not live data.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<section id="skills"><div class="wrap">
+  <h2>What I work with</h2>
+  <div class="skills">
+    <div><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Kotlin</span></div></div>
+    <div><h3>Backend</h3><div class="chips"><span class="chip">Flask</span><span class="chip">Django</span><span class="chip">Flask-RESTful</span><span class="chip">SQLAlchemy</span></div></div>
+    <div><h3>Frontend</h3><div class="chips"><span class="chip">React</span><span class="chip">HTML</span><span class="chip">CSS</span></div></div>
+    <div><h3>Databases</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">SQL</span></div></div>
+    <div><h3>APIs and security</h3><div class="chips"><span class="chip">REST design</span><span class="chip">JWT</span><span class="chip">OTP verification</span></div></div>
+    <div><h3>Tools and deployment</h3><div class="chips"><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Render</span><span class="chip">Flask-Migrate</span><span class="chip">WordPress</span></div></div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <article class="proj">
+    <div class="meta">Aug 2025 to Nov 2025</div>
+    <div>
+      <h3>SWYFT Driver and Customer Apps</h3>
+      <div class="role">Product-based systems</div>
+      <ul>
+        <li>Built secure authentication and authorization with JWT.</li>
+        <li>Implemented real-time location update APIs and order management workflows.</li>
+        <li>Integrated external payment APIs, stored data in PostgreSQL and validated every endpoint with Postman.</li>
+      </ul>
+      <div class="chips"><span class="chip">JWT</span><span class="chip">PostgreSQL</span><span class="chip">Payments</span><span class="chip">Postman</span></div>
+    </div>
+  </article>
+  <article class="proj">
+    <div class="meta">May 2025 to June 2025</div>
+    <div>
+      <h3>Vikundi e-Commerce Platform</h3>
+      <div class="role">Full stack and CMS-based solution</div>
+      <ul>
+        <li>Customized and launched a WordPress and WooCommerce store.</li>
+        <li>Designed responsive UI components and set up payments and product management.</li>
+        <li>Tested for cross-browser compatibility and mobile responsiveness.</li>
+      </ul>
+      <div class="chips"><span class="chip">WordPress</span><span class="chip">WooCommerce</span><span class="chip">Responsive UI</span></div>
+    </div>
+  </article>
+  <article class="proj">
+    <div class="meta">July 2024 to Aug 2024</div>
+    <div>
+      <h3>Bus Booking System</h3>
+      <div class="role">Full stack, backend lead</div>
+      <ul>
+        <li>Designed the backend architecture and REST endpoints for bus scheduling, ticket booking and customer management, with clear request and response schemas.</li>
+        <li>Added session-based authentication and M-Pesa STK push payments.</li>
+        <li>Protected data integrity with validation, error handling, a PostgreSQL database and API testing in Postman.</li>
+      </ul>
+      <div class="chips"><span class="chip">Flask</span><span class="chip">PostgreSQL</span><span class="chip">M-Pesa STK push</span><span class="chip">Postman</span></div>
+    </div>
+  </article>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <div class="tl">
+    <div class="meta">Jan 2025 to June 2025</div>
+    <div>
+      <h3>Software Development Intern</h3>
+      <div style="color:var(--accent);font-weight:600;margin-bottom:10px">Mambo Software Company</div>
+      <p style="margin:0 0 8px;max-width:62ch">Worked with frontend developers to build API endpoints, cleared technical blockers and improved full-stack performance.</p>
+      <p style="margin:0;max-width:62ch">Built Flutter UI components and connected them to REST APIs so the app and backend could exchange data reliably.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education and training</h2>
+  <ul class="edu">
+    <li><div><b>Virtual Assistance</b><br><span>ALX School</span></div><span>Feb 2026 to Apr 2026</span></li>
+    <li><div><b>Prompt Engineering</b><br><span>One Million Prompters</span></div><span>Jan 2026</span></li>
+    <li><div><b>Artificial Intelligence</b><br><span>ALX School</span></div><span>July 2025 to Aug 2025</span></li>
+    <li><div><b>Software Engineering</b><br><span>Moringa School</span></div><span>Feb 2024 to Aug 2024</span></li>
+    <li><div><b>Full Stack Software Development (MIT course)</b><br><span>eMobilis Technology Training Institute</span></div><span>Feb 2023 to July 2023</span></li>
+  </ul>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <h2>Have a product that needs a reliable backend?</h2>
+  <p>I'm open to backend and full-stack roles and project work. Send me a note and I'll reply.</p>
+  <div class="btns"><a class="btn primary" href="mailto:laurinemaina58@gmail.com">laurinemaina58@gmail.com</a><a class="btn" href="tel:+254746411462">+254 746 411 462</a></div>
+  <div class="links">
+    <a href="https://github.com/laureenmaina" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/laurinemaina" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Laurine Maina, Nairobi, Kenya</div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('theme');if(t)root.setAttribute('data-theme',t)}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark';root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next)}catch(e){}
+  });
+  var btn=document.getElementById('send'),res=document.getElementById('res'),out=document.getElementById('out');
+  var body='{\n  "status": "pending",\n  "message": "STK push sent to phone",\n  "checkout_request_id": "ws_CO_..."\n}';
+  btn.addEventListener('click',function(){
+    res.hidden=false;out.textContent='';btn.disabled=true;var i=0;
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){out.textContent=body;btn.disabled=false;return}
+    var timer=setInterval(function(){out.textContent=body.slice(0,++i);if(i>=body.length){clearInterval(timer);btn.disabled=false}},18);
+  });
+})();
+</script>
+</body>
+</html>
